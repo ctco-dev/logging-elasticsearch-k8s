@@ -1,0 +1,19 @@
+GET http://localhost:9200/_cluster/health?level=indices
+
+###
+
+PUT http://localhost:9200/test_idx?wait_for_active_shards=0
+Content-Type: application/json
+
+{ 
+   "settings": 
+   { 
+      "number_of_shards": 1, 
+      "number_of_replicas": 0,
+      "index.routing.allocation.exclude._name": "A,B" 
+   } 
+}
+
+###
+
+GET http://localhost:9200/_cluster/allocation/explain

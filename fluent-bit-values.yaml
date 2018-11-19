@@ -1,0 +1,6 @@
+backend:
+  type: es
+  es:
+    host: logging-es-elasticsearch-client
+    port: 9200
+    

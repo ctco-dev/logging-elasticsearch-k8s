@@ -1,0 +1,21 @@
+master:
+  replicas: 1
+  persistence:
+    enabled: true
+    name: data
+    storageClass: local-storage
+    size: 4Gi
+data:
+  replicas: 1
+  persistence:
+    enabled: true
+    name: data
+    storageClass: local-storage
+    size: 30Gi
+client:
+  replicas: 1
+cluster:
+  env: 
+    MINIMUM_MASTER_NODES: "1"
+    EXPECTED_MASTER_NODES: "1"
+    RECOVER_AFTER_MASTER_NODES: "1"

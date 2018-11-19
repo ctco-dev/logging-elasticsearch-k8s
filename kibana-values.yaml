@@ -1,0 +1,3 @@
+env:
+  ELASTICSEARCH_URL: http://logging-es-elasticsearch-client:9200
+  
