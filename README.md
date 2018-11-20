@@ -11,6 +11,7 @@ helm install -f ./fluent-bit-values.yaml --name logging-fluent-bit stable/fluent
 
 ### lightweight setup: 1 master, 1 data, 1 client node, w/ local volume persistence
 #### requirements:
+- kubernetes 1.10.x
 - adjust `nodeAffinity` key `kubernetes.io/hostname` in `pv.yaml` to fix `local` pv to specified host
 - create folders `/mnt/disks/logging-es-master` and `/mnt/disks/logging-es-data` to satisfy `local` pv 
 
