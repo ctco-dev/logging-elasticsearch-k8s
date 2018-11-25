@@ -1,6 +1,7 @@
 ## charts: elasticsearch, fluent-bit, kibana
+### lightweight setup: 1 master, 1 data, 1 client node
 
-### lightweight setup: 1 master, 1 data, 1 client node, w/o persistence
+### w/o persistence
 ```bash
 helm install -f ./elastic-no-pv-values.yaml --name logging-es stable/elasticsearch
 
@@ -9,7 +10,7 @@ helm install -f ./kibana-values.yaml --name logging-kibana stable/kibana
 helm install -f ./fluent-bit-values.yaml --name logging-fluent-bit stable/fluent-bit
 ```
 
-### lightweight setup: 1 master, 1 data, 1 client node, w/ local volume persistence
+### w/ local volume persistence
 #### requirements:
 - kubernetes 1.10.x
 - adjust `nodeAffinity` key `kubernetes.io/hostname` in `pv.yaml` to fix `local` pv to specified host
@@ -18,7 +19,7 @@ helm install -f ./fluent-bit-values.yaml --name logging-fluent-bit stable/fluent
 ```bash
 kubectl create -f ./pv.yaml
 
-helm install -f ./elastic-no-pv-values.yaml --name logging-es stable/elasticsearch
+helm install -f ./elastic-values.yaml --name logging-es stable/elasticsearch
 
 helm install stable/kibana --name logging-kibana -f kibana-values.yaml
 
